@@ -54,7 +54,7 @@
     /* Fonts */
     --font-display: 'Space Grotesk', sans-serif;
     --font-body: 'Inter', sans-serif;
-    --font-mono: 'Courier New', monospace;
+    --font-mono: 'Space Mono', 'Courier New', monospace;
 }
 
 /* Reset */
