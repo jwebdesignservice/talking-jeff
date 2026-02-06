@@ -341,7 +341,7 @@ class TalkingInvestigationApp {
      * Main conversation flow
      * 1. Send message to Claude AI
      * 2. Get response
-     * 3. Either use HeyGen avatar OR ElevenLabs TTS + character animation
+     * 3. Start speech/video AND text animation simultaneously
      */
     async processMessage(message) {
         this.isProcessing = true;
@@ -355,15 +355,23 @@ class TalkingInvestigationApp {
 
             this.character.hideLoading();
 
-            // Update speech bubble with response
-            await this.character.updateSpeechBubble(response, true);
-
-            // Speak the response
-            await this.speakResponse(response);
+            // Start character talking animation immediately
+            this.character.startTalking();
+            
+            // Run text typing and speech in parallel, perfectly synced
+            await Promise.all([
+                this.character.updateSpeechBubble(response, true),
+                this.speakResponseImmediate(response)
+            ]);
+            
+            // Stop talking animation when both are done
+            this.character.stopTalking();
+            this.setUIDisabled(false);
 
         } catch (error) {
             console.error('Error:', error);
             this.character.hideLoading();
+            this.character.stopTalking();
             this.setUIDisabled(false);
             this.showToast('Transmission failed', 'error');
         } finally {
@@ -372,7 +380,42 @@ class TalkingInvestigationApp {
     }
 
     /**
-     * Speak response using avatar or TTS
+     * Speak response using avatar or TTS (returns promise for sync)
+     */
+    async speakResponseImmediate(text) {
+        return new Promise(async (resolve) => {
+            // Try HeyGen avatar first if connected
+            if (this.useAvatar && this.heygen && this.heygen.isAvailable()) {
+                const success = await this.heygen.speak(text);
+
+                if (success) {
+                    // Avatar will handle speaking
+                    resolve();
+                    return;
+                }
+
+                // Fall through to TTS if avatar fails
+                console.log('Avatar speak failed, falling back to TTS');
+            }
+
+            // Use TTS (ElevenLabs or fallback)
+            this.tts.speak(
+                text,
+                () => {
+                    // On start - character already talking from processMessage
+                    if (this.stopSpeechBtn) this.stopSpeechBtn.disabled = false;
+                },
+                () => {
+                    // On end
+                    if (this.stopSpeechBtn) this.stopSpeechBtn.disabled = true;
+                    resolve();
+                }
+            );
+        });
+    }
+
+    /**
+     * Speak response using avatar or TTS (legacy method)
      */
     async speakResponse(text) {
         // Try HeyGen avatar first if connected

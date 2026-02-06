@@ -347,7 +347,7 @@ body::after {
     align-items: center;
     justify-content: center;
     height: 100%;
-    margin-top: 65px;
+    margin-top: 95px;
 }
 
 /* Push pin at top of panel */
@@ -1297,51 +1297,145 @@ body::after {
 }
 
 /* ============================================
-   LOADING OVERLAY - Accessing Files
+   THINKING BUBBLE - Cartoon Thought Cloud
    ============================================ */
 
-.loading-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(10, 10, 10, 0.98);
-    backdrop-filter: blur(10px);
+.thinking-bubble {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
     display: none;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    z-index: 1000;
+    z-index: 100;
 }
 
-.loading-overlay.active {
+.thinking-bubble.active {
     display: flex;
+    animation: bubblePopIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
-.loader {
-    text-align: center;
-}
+@keyframes bubblePopIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) scale(0) translateY(20px);
+    }
 
-.loader-ring {
-    width: 50px;
-    height: 50px;
-    border: 2px solid var(--bg-medium);
-    border-top-color: var(--terminal-green);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin: 0 auto 20px;
-    box-shadow: var(--glow-green);
-}
-
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1) translateY(0);
     }
 }
 
-.loader p {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: var(--terminal-green);
-    letter-spacing: 3px;
-    text-transform: uppercase;
+/* Main thought cloud */
+.thought-cloud {
+    background: #f5f5dc;
+    border: 3px solid #333;
+    border-radius: 50px;
+    padding: 12px 20px;
+    position: relative;
+    box-shadow:
+        4px 4px 0 #333,
+        inset 0 -3px 0 rgba(0, 0, 0, 0.1);
+    /* Paper texture effect */
+    background-image:
+        repeating-linear-gradient(0deg,
+            transparent,
+            transparent 2px,
+            rgba(0, 0, 0, 0.02) 2px,
+            rgba(0, 0, 0, 0.02) 4px);
+}
+
+/* Thinking dots inside cloud */
+.thinking-dots {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.thinking-dots .dot {
+    width: 12px;
+    height: 12px;
+    background: #333;
+    border-radius: 50%;
+    animation: thinkingBounce 1.4s ease-in-out infinite;
+}
+
+.thinking-dots .dot:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.thinking-dots .dot:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.thinking-dots .dot:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+@keyframes thinkingBounce {
+
+    0%,
+    60%,
+    100% {
+        transform: translateY(0);
+        opacity: 0.4;
+    }
+
+    30% {
+        transform: translateY(-8px);
+        opacity: 1;
+    }
+}
+
+/* Trail of bubbles leading to character */
+.thought-trail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.trail-dot {
+    background: #f5f5dc;
+    border: 2px solid #333;
+    border-radius: 50%;
+    box-shadow: 2px 2px 0 #333;
+}
+
+.trail-dot.t1 {
+    width: 14px;
+    height: 14px;
+    animation: trailPop 0.3s ease-out 0.1s backwards;
+}
+
+.trail-dot.t2 {
+    width: 10px;
+    height: 10px;
+    margin-top: 4px;
+    margin-left: 8px;
+    animation: trailPop 0.3s ease-out 0.2s backwards;
+}
+
+.trail-dot.t3 {
+    width: 6px;
+    height: 6px;
+    margin-top: 3px;
+    margin-left: 12px;
+    animation: trailPop 0.3s ease-out 0.3s backwards;
+}
+
+@keyframes trailPop {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 /* ============================================
@@ -3448,34 +3542,27 @@ a:focus-visible {
 
 @media (max-width: 768px) {
     .investigation-section-large.gates-layout {
-        padding: 40px 20px;
+        padding: 25px 12px;
     }
 
     .gates-evidence-pile {
         gap: 10px;
         padding: 10px;
-    }
-
-    .gates-evidence-pile .document-clip,
-    .gates-evidence-pile .document-clip.tall {
-        width: 150px;
-    }
-
-    .gates-evidence-pile .news-clip {
-        width: 160px;
+        display: none;
     }
 
     .evidence-file,
     .evidence-file.large {
-        width: 180px;
+        width: 100%;
+        max-width: 180px;
     }
 
     .gates-info-card {
-        padding: 25px;
+        padding: 22px 15px;
     }
 
     .gates-info-card .info-name {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
     }
 }
 
@@ -4015,17 +4102,17 @@ a:focus-visible {
 
 @media (max-width: 768px) {
     .investigation-section-large {
-        padding: 40px 15px;
+        padding: 25px 10px;
     }
 
     .large-section-content {
-        padding: 0 10px;
+        padding: 0 5px;
     }
 
     .large-section-bottom {
         flex-direction: column;
         align-items: center;
-        gap: 30px;
+        gap: 20px;
     }
 
     .bottom-evidence-cluster {
@@ -4034,20 +4121,22 @@ a:focus-visible {
 
     .large-person-info {
         max-width: 100%;
-        padding: 25px;
+        padding: 20px 15px;
         min-width: auto;
     }
 
     .large-person-info .info-name {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
     }
 
-    .side-evidence-column .sticky-note,
-    .side-evidence-column .document-clip,
+    .side-evidence-column {
+        display: none;
+    }
+
     .bottom-evidence-cluster .sticky-note,
     .bottom-evidence-cluster .document-clip {
         width: auto;
-        min-width: 100px;
+        min-width: 80px;
     }
 }
 
@@ -4723,7 +4812,7 @@ a:focus-visible {
 
 @media (max-width: 768px) {
     .qa-investigation-wall {
-        padding: 40px 15px;
+        padding: 25px 10px;
     }
 
     .cork-board {
@@ -4779,17 +4868,29 @@ a:focus-visible {
         align-items: center;
         max-width: 100%;
         min-width: unset;
+        gap: 25px;
+    }
+
+    /* Force polaroid photo ALWAYS before text on tablet/mobile */
+    .person-card .polaroid-frame {
+        order: -1;
+    }
+
+    .person-card .person-info {
+        order: 1;
     }
 
     .polaroid-frame {
         width: 100%;
         max-width: 400px;
+        transform: rotate(-1.5deg);
     }
 
     .person-info {
         max-width: 100%;
         min-width: unset;
         width: 100%;
+        transform: rotate(0.5deg);
     }
 
     .evidence-scatter {
@@ -4849,17 +4950,35 @@ a:focus-visible {
 
 @media (max-width: 768px) {
     .investigation-board {
-        padding: 20px 0;
+        padding: 15px 0;
     }
 
     .investigation-section {
-        padding: 30px 15px;
-        width: 95%;
+        padding: 25px 12px;
+        width: 96%;
+        margin: 15px auto;
+    }
+
+    /* Person cards - photo first, stacked vertically */
+    .person-card {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .person-card .polaroid-frame {
+        order: -1;
+    }
+
+    .person-card .person-info {
+        order: 1;
     }
 
     .polaroid-frame {
         width: 100%;
         max-width: 320px;
+        transform: rotate(-1deg);
+        margin: 0 auto;
     }
 
     .polaroid-image {
@@ -4868,6 +4987,9 @@ a:focus-visible {
 
     .person-info {
         padding: 25px 20px;
+        transform: rotate(0deg);
+        width: 100%;
+        max-width: 100%;
     }
 
     .info-name {
@@ -4879,7 +5001,8 @@ a:focus-visible {
     }
 
     .info-desc {
-        font-size: 0.8rem;
+        font-size: 0.82rem;
+        line-height: 1.6;
     }
 
     .info-status {
@@ -4889,6 +5012,7 @@ a:focus-visible {
 
     .evidence-grid {
         grid-template-columns: 1fr;
+        gap: 15px;
     }
 
     .questions-grid {
@@ -4901,23 +5025,40 @@ a:focus-visible {
         letter-spacing: 2px;
     }
 
-    /* Evidence scatter - simplify on mobile */
+    /* Evidence scatter - hide on mobile */
     .evidence-scatter {
         display: none;
     }
 
     /* Key Evidence Section */
     .investigation-section.evidence-board {
-        padding: 30px 15px;
+        padding: 25px 12px;
     }
 
     .evidence-grid-container {
-        gap: 20px;
+        gap: 15px;
     }
 
+    /* Evidence cards - slight rotations for realism */
     .evidence-item {
-        padding: 25px 20px;
+        padding: 22px 18px;
         width: 100%;
+    }
+
+    .evidence-item:nth-child(1) {
+        transform: rotate(-0.5deg) !important;
+    }
+
+    .evidence-item:nth-child(2) {
+        transform: rotate(0.8deg) !important;
+    }
+
+    .evidence-item:nth-child(3) {
+        transform: rotate(-0.3deg) !important;
+    }
+
+    .evidence-item:nth-child(4) {
+        transform: rotate(0.6deg) !important;
     }
 
     .item-content h4 {
@@ -4925,7 +5066,7 @@ a:focus-visible {
     }
 
     .item-content p {
-        font-size: 0.9rem;
+        font-size: 0.88rem;
     }
 
     /* Gates section mobile */
@@ -4937,7 +5078,13 @@ a:focus-visible {
     .gates-right-scatter .sticky-note,
     .gates-right-scatter .document-clip,
     .gates-right-scatter .evidence-file {
-        transform: none !important;
+        transform: rotate(-2deg) !important;
+    }
+
+    .gates-right-scatter .sticky-note:nth-child(even),
+    .gates-right-scatter .document-clip:nth-child(even),
+    .gates-right-scatter .evidence-file:nth-child(even) {
+        transform: rotate(2deg) !important;
     }
 
     .gates-evidence-pile>* {
@@ -4957,16 +5104,23 @@ a:focus-visible {
 
 @media (max-width: 480px) {
     .investigation-section {
-        padding: 25px 12px;
+        padding: 20px 10px;
         width: 98%;
+        margin: 10px auto;
+    }
+
+    .person-card {
+        gap: 15px;
     }
 
     .polaroid-frame {
         max-width: 280px;
+        transform: rotate(-0.8deg);
     }
 
     .person-info {
         padding: 20px 15px;
+        transform: rotate(0deg);
     }
 
     .info-name {
@@ -4975,6 +5129,7 @@ a:focus-visible {
 
     .info-desc {
         font-size: 0.75rem;
+        line-height: 1.5;
     }
 
     .board-title h2,
@@ -4989,9 +5144,9 @@ a:focus-visible {
         height: 10px;
     }
 
-    /* Evidence items */
+    /* Evidence items - keep slight rotation */
     .evidence-item {
-        padding: 20px 15px;
+        padding: 18px 14px;
     }
 
     .item-content h4 {
@@ -5010,7 +5165,7 @@ a:focus-visible {
 
     /* Gates section mobile */
     .gates-photo-frame .large-polaroid {
-        padding: 15px 15px 40px 15px;
+        padding: 12px 12px 35px 12px;
     }
 
     .gates-photo-frame .person-name {
@@ -5964,11 +6119,11 @@ a:focus-visible {
 /* Footer Responsive - Mobile */
 @media (max-width: 768px) {
     .investigation-footer {
-        padding: 40px 15px 25px;
+        padding: 35px 12px 20px;
     }
 
     .footer-stamp {
-        margin-bottom: 25px;
+        margin-bottom: 22px;
     }
 
     .stamp-text-talking {
@@ -5983,34 +6138,42 @@ a:focus-visible {
     }
 
     .footer-notes {
-        gap: 12px;
+        gap: 10px;
         flex-wrap: wrap;
         justify-content: center;
     }
 
     .footer-note {
-        width: 70px;
-        height: 70px;
-        padding: 10px;
+        width: 65px;
+        height: 65px;
+        padding: 8px;
+        transform: rotate(0deg);
     }
 
+    /* Alternate rotations for notes to look realistic */
+    .footer-note:nth-child(1) { transform: rotate(-2deg); }
+    .footer-note:nth-child(2) { transform: rotate(1.5deg); }
+    .footer-note:nth-child(3) { transform: rotate(-1deg); }
+    .footer-note:nth-child(4) { transform: rotate(2deg); }
+    .footer-note:nth-child(5) { transform: rotate(-1.5deg); }
+
     .footer-note .note-icon-svg {
-        width: 22px;
-        height: 22px;
+        width: 20px;
+        height: 20px;
     }
 
     .footer-note .note-label {
-        font-size: 0.55rem;
+        font-size: 0.5rem;
     }
 
     .footer-case-strip {
         flex-direction: column;
-        gap: 12px;
-        padding: 15px 10px;
+        gap: 10px;
+        padding: 12px 10px;
     }
 
     .case-item {
-        font-size: 0.65rem;
+        font-size: 0.62rem;
     }
 
     .case-divider {
@@ -6018,8 +6181,8 @@ a:focus-visible {
     }
 
     .footer-watermark {
-        font-size: 4rem;
-        letter-spacing: 10px;
+        font-size: 3.5rem;
+        letter-spacing: 8px;
     }
 
     .footer-copyright {
@@ -6028,11 +6191,11 @@ a:focus-visible {
     }
 
     .redacted-line {
-        width: 40px;
+        width: 35px;
     }
 
     .copyright-text {
-        font-size: 0.65rem;
+        font-size: 0.62rem;
         letter-spacing: 1px;
     }
 }
@@ -6040,11 +6203,11 @@ a:focus-visible {
 /* Footer Responsive - Small Mobile */
 @media (max-width: 480px) {
     .investigation-footer {
-        padding: 30px 10px 20px;
+        padding: 25px 8px 18px;
     }
 
     .footer-stamp {
-        margin-bottom: 20px;
+        margin-bottom: 16px;
     }
 
     .stamp-text-talking {
@@ -6063,41 +6226,41 @@ a:focus-visible {
     }
 
     .footer-note {
-        width: 60px;
-        height: 60px;
-        padding: 8px;
+        width: 55px;
+        height: 55px;
+        padding: 6px;
     }
 
     .footer-note .note-icon-svg {
-        width: 18px;
-        height: 18px;
+        width: 16px;
+        height: 16px;
     }
 
     .footer-note .note-label {
-        font-size: 0.5rem;
-        margin-top: 4px;
+        font-size: 0.45rem;
+        margin-top: 3px;
     }
 
     .footer-case-strip {
-        padding: 12px 8px;
-        gap: 10px;
+        padding: 10px 6px;
+        gap: 8px;
     }
 
     .case-item {
-        font-size: 0.55rem;
+        font-size: 0.52rem;
     }
 
     .footer-watermark {
-        font-size: 2.5rem;
-        letter-spacing: 5px;
+        font-size: 2.2rem;
+        letter-spacing: 4px;
     }
 
     .copyright-text {
-        font-size: 0.55rem;
+        font-size: 0.5rem;
     }
 
     .redacted-line {
-        width: 30px;
+        width: 25px;
         height: 2px;
     }
 }
@@ -6538,15 +6701,25 @@ body::after {
 
 @media (max-width: 1024px) {
 
-    /* Reduce evidence scatter complexity */
+    /* Reduce evidence scatter complexity - keep slight rotations */
     .evidence-scatter {
         gap: 10px;
     }
 
-    .sticky-note,
-    .document-clip,
+    .sticky-note {
+        transform: rotate(-2deg) !important;
+    }
+
+    .sticky-note:nth-child(even) {
+        transform: rotate(2deg) !important;
+    }
+
+    .document-clip {
+        transform: rotate(1deg) !important;
+    }
+
     .news-clip {
-        transform: none !important;
+        transform: rotate(-1.5deg) !important;
     }
 
     /* Gates section overflow fix */
@@ -6555,9 +6728,10 @@ body::after {
         padding: 15px;
     }
 
-    .gates-right-scatter>* {
-        transform: none !important;
-    }
+    .gates-right-scatter > *:nth-child(1) { transform: rotate(-4deg) !important; }
+    .gates-right-scatter > *:nth-child(2) { transform: rotate(3deg) !important; }
+    .gates-right-scatter > *:nth-child(3) { transform: rotate(-1deg) !important; }
+    .gates-right-scatter > *:nth-child(4) { transform: rotate(5deg) !important; }
 
     .gates-evidence-pile {
         overflow: hidden;
@@ -6621,16 +6795,16 @@ body::after {
     }
 
     .text-input {
-        width: calc(100% - 65px);
-        /* Leave room for buttons */
+        width: 100%;
+        min-width: 0;
     }
 
     /* Investigation sections */
     .investigation-section {
-        width: 100%;
+        width: 96%;
         max-width: 100%;
         box-sizing: border-box;
-        padding: 25px 15px;
+        padding: 25px 12px;
     }
 
     .section-content {
@@ -6638,26 +6812,40 @@ body::after {
         overflow: hidden;
     }
 
+    /* Person card - photo first */
     .person-card {
         width: 100%;
         max-width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .person-card .polaroid-frame {
+        order: -1;
+    }
+
+    .person-card .person-info {
+        order: 1;
     }
 
     .polaroid-frame {
         width: 100%;
-        max-width: 300px;
+        max-width: 320px;
         margin: 0 auto;
+        transform: rotate(-1deg);
     }
 
     .person-info {
         width: 100%;
         max-width: 100%;
         min-width: unset;
+        transform: rotate(0deg);
     }
 
     /* Gates section mobile */
     .investigation-section-large.gates-layout {
-        padding: 30px 10px;
+        padding: 25px 10px;
         width: 100%;
         box-sizing: border-box;
     }
@@ -6674,6 +6862,7 @@ body::after {
 
     .large-polaroid {
         max-width: 100%;
+        transform: rotate(-1deg) !important;
     }
 
     .gates-right-scatter {
@@ -6685,15 +6874,22 @@ body::after {
         gap: 10px;
     }
 
+    /* Keep slight rotations on scatter items for realism */
+    .gates-right-scatter > *:nth-child(1) { transform: rotate(-3deg) !important; }
+    .gates-right-scatter > *:nth-child(2) { transform: rotate(2deg) !important; }
+    .gates-right-scatter > *:nth-child(3) { transform: rotate(-1deg) !important; }
+    .gates-right-scatter > *:nth-child(4) { transform: rotate(4deg) !important; }
+    .gates-right-scatter > *:nth-child(5) { transform: rotate(-2deg) !important; }
+
     .gates-evidence-pile {
         display: none;
-        /* Too complex for mobile, hide it */
     }
 
     .gates-info-card {
         width: 100%;
         max-width: 100%;
-        padding: 25px 15px;
+        padding: 22px 15px;
+        transform: rotate(0.5deg);
     }
 
     /* Evidence board */
@@ -6707,16 +6903,21 @@ body::after {
         gap: 15px;
     }
 
+    /* Evidence cards with slight rotations for realism */
     .evidence-item {
         width: 100%;
         max-width: 100%;
         margin: 0;
-        transform: none !important;
     }
+
+    .evidence-item:nth-child(1) { transform: rotate(-0.5deg) !important; }
+    .evidence-item:nth-child(2) { transform: rotate(0.7deg) !important; }
+    .evidence-item:nth-child(3) { transform: rotate(-0.3deg) !important; }
+    .evidence-item:nth-child(4) { transform: rotate(0.5deg) !important; }
 
     /* Q&A section */
     .qa-investigation-wall {
-        padding: 30px 10px;
+        padding: 25px 10px;
         width: 100%;
         box-sizing: border-box;
     }
@@ -6730,14 +6931,22 @@ body::after {
 
     .qa-cards-container {
         padding: 10px 0;
+        gap: 15px;
     }
 
+    /* Q&A cards with slight rotations */
     .qa-card {
         width: 100%;
         max-width: 100%;
         margin: 0;
-        transform: none !important;
     }
+
+    .qa-card:nth-child(1) { transform: rotate(0.5deg) !important; }
+    .qa-card:nth-child(2) { transform: rotate(-0.8deg) !important; }
+    .qa-card:nth-child(3) { transform: rotate(0.3deg) !important; }
+    .qa-card:nth-child(4) { transform: rotate(-0.5deg) !important; }
+    .qa-card:nth-child(5) { transform: rotate(0.7deg) !important; }
+    .qa-card:nth-child(6) { transform: rotate(-0.4deg) !important; }
 
     .board-decorations {
         display: none;
@@ -6747,12 +6956,13 @@ body::after {
     .investigation-footer {
         width: 100%;
         box-sizing: border-box;
-        padding: 30px 10px 20px;
+        padding: 35px 12px 20px;
     }
 
     .footer-stamp {
         width: 100%;
         overflow: hidden;
+        margin-bottom: 25px;
     }
 
     .stamp-text-wrapper {
@@ -6765,6 +6975,9 @@ body::after {
         width: 100%;
         padding: 0;
         box-sizing: border-box;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
     .footer-evidence-tags {
@@ -6850,11 +7063,17 @@ body::after {
 
     /* Investigation sections */
     .investigation-section {
-        padding: 20px 8px;
+        padding: 18px 8px;
+        margin: 8px auto;
+    }
+
+    .person-card {
+        gap: 12px;
     }
 
     .polaroid-frame {
         max-width: 260px;
+        transform: rotate(-0.5deg);
     }
 
     .polaroid-caption {
@@ -6862,7 +7081,7 @@ body::after {
     }
 
     .person-name {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
     }
 
     .person-info {
@@ -6931,7 +7150,6 @@ body::after {
     .gates-right-scatter .evidence-file,
     .gates-right-scatter .news-clip {
         display: none;
-        /* Hide complex elements on small mobile */
     }
 
     .gates-info-card {
@@ -6960,7 +7178,7 @@ body::after {
 
     /* Evidence board */
     .board-title {
-        padding: 10px 15px;
+        padding: 10px 12px;
         gap: 10px;
     }
 
@@ -6975,7 +7193,7 @@ body::after {
     }
 
     .evidence-item {
-        padding: 18px 12px;
+        padding: 16px 12px;
     }
 
     .doc-stamp {
@@ -7000,7 +7218,7 @@ body::after {
 
     /* Q&A section */
     .qa-board-header {
-        padding: 10px 15px;
+        padding: 10px 12px;
     }
 
     .qa-title {
@@ -7009,12 +7227,12 @@ body::after {
     }
 
     .qa-card {
-        min-height: 120px;
-        padding: 15px 12px;
+        min-height: 110px;
+        padding: 14px 12px;
     }
 
     .card-question {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
     }
 
     .card-label {
@@ -7022,9 +7240,17 @@ body::after {
     }
 
     /* Footer */
+    .investigation-footer {
+        padding: 25px 8px 18px;
+    }
+
+    .footer-stamp {
+        margin-bottom: 18px;
+    }
+
     .footer-note {
-        width: 55px;
-        height: 55px;
+        width: 52px;
+        height: 52px;
         padding: 6px;
     }
 
@@ -7157,7 +7383,12 @@ body::after {
 
     /* Investigation sections */
     .investigation-section {
-        padding: 15px 5px;
+        padding: 14px 5px;
+        margin: 6px auto;
+    }
+
+    .person-card {
+        gap: 10px;
     }
 
     .polaroid-frame {
@@ -7165,7 +7396,7 @@ body::after {
     }
 
     .person-info {
-        padding: 15px 10px;
+        padding: 14px 10px;
     }
 
     .info-name {
@@ -7174,11 +7405,12 @@ body::after {
 
     .info-desc {
         font-size: 0.65rem;
+        line-height: 1.45;
     }
 
     /* Gates section */
     .gates-photo-frame .large-polaroid {
-        padding: 8px 8px 30px 8px;
+        padding: 8px 8px 28px 8px;
     }
 
     .gates-right-scatter .sticky-note {
@@ -7187,7 +7419,7 @@ body::after {
     }
 
     .gates-info-card {
-        padding: 15px 10px;
+        padding: 14px 10px;
     }
 
     .gates-info-card .info-name {
@@ -7200,7 +7432,7 @@ body::after {
 
     /* Evidence board */
     .evidence-item {
-        padding: 15px 10px;
+        padding: 14px 10px;
     }
 
     .item-content h4 {
@@ -7217,15 +7449,19 @@ body::after {
     }
 
     .qa-card {
-        min-height: 100px;
+        min-height: 90px;
         padding: 12px 10px;
     }
 
     .card-question {
-        font-size: 0.8rem;
+        font-size: 0.78rem;
     }
 
     /* Footer */
+    .investigation-footer {
+        padding: 20px 5px 15px;
+    }
+
     .stamp-text-talking {
         font-size: 1.1rem;
     }
@@ -7234,9 +7470,14 @@ body::after {
         font-size: 1.2rem;
     }
 
+    .footer-notes {
+        gap: 6px;
+    }
+
     .footer-note {
-        width: 48px;
-        height: 48px;
+        width: 46px;
+        height: 46px;
+        padding: 4px;
     }
 
     .footer-note .note-icon-svg {
@@ -7245,7 +7486,7 @@ body::after {
     }
 
     .footer-note .note-label {
-        font-size: 0.4rem;
+        font-size: 0.38rem;
     }
 
     .footer-case-strip {
@@ -7921,7 +8162,7 @@ body::after {
     .speech-bubble,
     .footer-notes,
     .qa-modal-overlay,
-    .loading-overlay,
+    .thinking-bubble,
     .preloader {
         display: none !important;
     }

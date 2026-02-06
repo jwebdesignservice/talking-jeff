@@ -30,7 +30,8 @@
                 <div class="paper-lines"></div>
             </div>
             <div class="scatter-item sticky-note yellow" style="--x: -18vw; --y: -43vh; --rot: -5deg; --delay: 0.2s;">
-                <span>URGENT</span></div>
+                <span>URGENT</span>
+            </div>
             <div class="scatter-item polaroid-doc" style="--x: 0vw; --y: -41vh; --rot: 12deg; --delay: 0.12s;">
                 <div class="polaroid-inner"></div>
             </div>
@@ -51,7 +52,8 @@
                 <div class="paper-stamp">CLASSIFIED</div>
             </div>
             <div class="scatter-item sticky-note pink" style="--x: -35vw; --y: -28vh; --rot: -10deg; --delay: 0.3s;">
-                <span>TOP SECRET</span></div>
+                <span>TOP SECRET</span>
+            </div>
             <div class="scatter-item newspaper-clip" style="--x: 32vw; --y: -26vh; --rot: 7deg; --delay: 0.32s;"></div>
             <div class="scatter-item evidence-photo" style="--x: 44vw; --y: -24vh; --rot: -6deg; --delay: 0.35s;">
                 <div class="photo-content"></div><span class="photo-date">2006</span>
@@ -65,7 +67,8 @@
                 <div class="polaroid-inner"></div>
             </div>
             <div class="scatter-item sticky-note yellow" style="--x: -44vw; --y: 22vh; --rot: -7deg; --delay: 0.42s;">
-                <span>REVIEW</span></div>
+                <span>REVIEW</span>
+            </div>
 
             <!-- Right side -->
             <div class="scatter-item file-paper" style="--x: 46vw; --y: -5vh; --rot: 11deg; --delay: 0.45s;">
@@ -84,7 +87,8 @@
                 <div class="photo-content"></div><span class="photo-date">2008</span>
             </div>
             <div class="scatter-item sticky-note pink" style="--x: 25vw; --y: 36vh; --rot: 9deg; --delay: 0.58s;">
-                <span>EVIDENCE</span></div>
+                <span>EVIDENCE</span>
+            </div>
             <div class="scatter-item file-paper" style="--x: 40vw; --y: 38vh; --rot: -7deg; --delay: 0.6s;">
                 <div class="paper-lines"></div>
                 <div class="paper-stamp">REDACTED</div>
@@ -101,7 +105,8 @@
                 <div class="envelope-flap"></div>
             </div>
             <div class="scatter-item sticky-note yellow" style="--x: 10vw; --y: 43vh; --rot: 8deg; --delay: 0.7s;">
-                <span>PRIORITY</span></div>
+                <span>PRIORITY</span>
+            </div>
             <div class="scatter-item file-paper" style="--x: 28vw; --y: 44vh; --rot: -11deg; --delay: 0.72s;">
                 <div class="paper-lines"></div>
             </div>
@@ -273,6 +278,22 @@
                             </div>
                         </div>
                         <div class="scanlines"></div>
+
+                        <!-- Thinking Bubble -->
+                        <div class="thinking-bubble" id="loadingIndicator">
+                            <div class="thought-cloud">
+                                <div class="thinking-dots">
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                </div>
+                            </div>
+                            <div class="thought-trail">
+                                <span class="trail-dot t1"></span>
+                                <span class="trail-dot t2"></span>
+                                <span class="trail-dot t3"></span>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Speech Bubble -->
@@ -710,7 +731,7 @@
                     <div class="polaroid-frame">
                         <div class="photo-pin"></div>
                         <div class="polaroid-image">
-                            <img src="Images/steven.webp" alt="Stephen Hawking"
+                            <img src="Images/steven and women.png" alt="Stephen Hawking"
                                 style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
                         <div class="polaroid-caption">
@@ -1237,13 +1258,6 @@
 
     </div>
 
-    <!-- Loading Overlay -->
-    <div class="loading-overlay" id="loadingIndicator">
-        <div class="loader">
-            <div class="loader-ring"></div>
-            <p>ACCESSING CLASSIFIED FILES...</p>
-        </div>
-    </div>
 
     <!-- Toast Container -->
     <div class="toast-container" id="toastContainer"></div>
