@@ -340,7 +340,7 @@ body::after {
    ============================================ */
 
 .info-panel {
-    width: 100%;
+    width: 50%;
     flex-shrink: 0;
     position: relative;
     display: flex;
@@ -2673,7 +2673,7 @@ a:focus-visible {
     max-width: 150px;
     box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
     position: relative;
-    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-family: 'Comic Neue', 'Comic Sans MS', cursive, sans-serif;
     font-size: 0.8rem;
     color: #333;
     line-height: 1.4;
@@ -4860,17 +4860,22 @@ a:focus-visible {
         padding: 40px 20px;
     }
 
-    /* Hide the question and answer boxes on mobile/tablet */
+    /* Style the question and answer boxes on mobile with backgrounds */
     .modal-question-card {
-        background: none;
-        box-shadow: none;
-        padding: 15px;
+        background: linear-gradient(180deg, #fafafa 0%, #f0f0f0 100%);
+        box-shadow: 4px 8px 20px rgba(0, 0, 0, 0.5);
+        padding: 20px 25px;
+        max-width: 95%;
+        margin: 0 auto 15px auto;
+        transform: none;
     }
 
     .modal-answer-note {
-        background: none;
-        box-shadow: none;
-        padding: 15px;
+        background: linear-gradient(180deg, #FFEB3B 0%, #FDD835 100%);
+        box-shadow: 4px 6px 20px rgba(0, 0, 0, 0.4);
+        padding: 20px;
+        max-width: 95%;
+        margin: 0 auto;
         transform: none !important;
     }
 
@@ -4882,11 +4887,12 @@ a:focus-visible {
 
     .modal-question-text {
         font-size: 1.1rem;
-        color: #fff;
+        color: #1a1a1a;
+        text-align: center;
     }
 
     .answer-text {
-        color: #ddd;
+        color: #333;
     }
 
     .answer-text {
@@ -6177,7 +6183,7 @@ a:focus-visible {
 }
 
 .folder-sticky p {
-    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-family: 'Comic Neue', 'Comic Sans MS', cursive, sans-serif;
     font-size: 0.45rem;
     color: #333;
     font-weight: 700;
@@ -7108,19 +7114,28 @@ body::after {
     .qa-modal-content {
         max-width: 95vw;
         padding: 30px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 
-    /* Hide the question and answer boxes on tablet */
+    /* Style the question and answer boxes on tablet with backgrounds */
     .modal-question-card {
-        background: none;
-        box-shadow: none;
-        padding: 15px;
+        background: linear-gradient(180deg, #fafafa 0%, #f0f0f0 100%);
+        box-shadow: 6px 10px 30px rgba(0, 0, 0, 0.5);
+        padding: 25px 30px;
+        max-width: 90%;
+        margin: 0 auto 20px auto;
+        transform: none;
     }
 
     .modal-answer-note {
-        background: none;
-        box-shadow: none;
-        padding: 15px;
+        background: linear-gradient(180deg, #FFEB3B 0%, #FDD835 100%);
+        box-shadow: 5px 8px 25px rgba(0, 0, 0, 0.4);
+        padding: 25px;
+        max-width: 90%;
+        margin: 0 auto;
         transform: none !important;
     }
 
@@ -7131,11 +7146,12 @@ body::after {
     }
 
     .modal-question-text {
-        color: #fff;
+        color: #1a1a1a;
+        text-align: center;
     }
 
     .answer-text {
-        color: #ddd;
+        color: #333;
     }
 
     /* Footer file stacks - already hidden at 1200px */
@@ -8300,7 +8316,7 @@ body::after {
 }
 
 .scatter-item.sticky-note span {
-    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-family: 'Comic Neue', 'Comic Sans MS', cursive, sans-serif;
     font-size: 0.5rem;
     font-weight: bold;
     color: #333;
