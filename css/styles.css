@@ -1024,7 +1024,6 @@ body::after {
     justify-content: center;
     gap: 10px;
     width: 100%;
-    max-width: 580px;
     margin-top: 4px;
     position: relative;
     z-index: 10;
@@ -1143,8 +1142,9 @@ body::after {
     display: flex;
     flex-direction: column;
     gap: 0;
-    margin-left: 60px;
-    margin-right: 60px;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .input-box {
@@ -1539,7 +1539,7 @@ body::after {
 
     .interactive-zone {
         max-width: 100%;
-        padding: 0 10px;
+        padding: 0;
     }
 
     .character-wrapper {
@@ -1565,16 +1565,21 @@ body::after {
     }
 
     .title {
-        flex-direction: column;
-        gap: 5px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: baseline;
+        justify-content: center;
+        text-align: center;
+        gap: 8px;
+        margin-top: 45px;
     }
 
     .title-top {
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
 
     .title-bottom {
-        font-size: 2.8rem;
+        font-size: 2.5rem;
     }
 
     .character-frame {
@@ -1614,16 +1619,20 @@ body::after {
     }
 
     .title {
-        margin-top: 20px;
+        margin-top: 35px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px;
     }
 
     .title-top {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
         letter-spacing: 2px;
     }
 
     .title-bottom {
-        font-size: 2.2rem;
+        font-size: 2rem;
         letter-spacing: 2px;
     }
 
@@ -1702,6 +1711,7 @@ body::after {
         gap: 10px;
         max-width: 100%;
         margin-top: 5px;
+        padding: 0;
     }
 
     .btn-strip {
@@ -1803,17 +1813,24 @@ body::after {
     }
 
     .title {
-        margin-top: 15px;
+        margin-top: 32px;
         margin-bottom: 10px;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: baseline;
+        text-align: center;
+        gap: 5px;
+        white-space: nowrap;
     }
 
     .title-top {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
         letter-spacing: 1px;
     }
 
     .title-bottom {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
         letter-spacing: 1px;
     }
 
@@ -1965,12 +1982,18 @@ body::after {
         padding: 25px 12px 20px;
     }
 
+    .title {
+        flex-wrap: nowrap;
+        white-space: nowrap;
+        gap: 4px;
+    }
+
     .title-top {
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 
     .title-bottom {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
 
     .description {
@@ -3183,7 +3206,7 @@ a:focus-visible {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 80px;
+    gap: 50px;
 }
 
 /* TOP ROW: Photo (Left) + Scattered Evidence (Right) */
@@ -4821,7 +4844,8 @@ a:focus-visible {
     }
 
     .qa-title {
-        font-size: 1.3rem;
+        font-size: 1.4rem;
+        text-align: center;
     }
 
     .qa-cards-container {
@@ -4861,14 +4885,21 @@ a:focus-visible {
     .investigation-section .section-content {
         flex-direction: column;
         align-items: center;
+        gap: 20px;
+    }
+
+    .investigation-section {
+        padding: 40px 25px;
+        width: 94%;
     }
 
     .person-card {
         flex-direction: column;
         align-items: center;
-        max-width: 100%;
+        max-width: 600px;
         min-width: unset;
-        gap: 25px;
+        gap: 20px;
+        margin: 0 auto;
     }
 
     /* Force polaroid photo ALWAYS before text on tablet/mobile */
@@ -4882,32 +4913,39 @@ a:focus-visible {
 
     .polaroid-frame {
         width: 100%;
-        max-width: 400px;
+        max-width: 420px;
         transform: rotate(-1.5deg);
+        margin: 0 auto;
     }
 
     .person-info {
-        max-width: 100%;
+        max-width: 600px;
         min-width: unset;
         width: 100%;
         transform: rotate(0.5deg);
+        padding: 30px 25px;
     }
 
-    .evidence-scatter {
-        flex-direction: row;
-        max-width: 100%;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
+    /* Hide evidence scatter items that cause clutter at this size */
     .evidence-scatter.left-scatter,
     .evidence-scatter.right-scatter {
-        align-items: center;
+        display: none;
+    }
+
+    .evidence-scatter.top-scatter,
+    .evidence-scatter.bottom-scatter,
+    .evidence-scatter.bottom-left-scatter {
+        display: none;
+    }
+
+    /* Hide connection strings */
+    .section-connections {
+        display: none;
     }
 
     .investigation-section.dual {
         flex-direction: column;
-        gap: 60px;
+        gap: 40px;
     }
 
     .connection-svg.wide {
@@ -4916,7 +4954,7 @@ a:focus-visible {
 
     /* Gates/Clinton Section */
     .gates-layout {
-        padding: 30px 15px;
+        padding: 30px 20px;
     }
 
     .gates-row-top,
@@ -4927,24 +4965,102 @@ a:focus-visible {
 
     .gates-photo-frame {
         width: 100%;
-        max-width: 450px;
+        max-width: 550px;
     }
 
     .gates-right-scatter {
         width: 100%;
-        grid-template-columns: repeat(3, auto);
+        display: flex;
+        flex-wrap: wrap;
         justify-content: center;
-        padding: 20px 0;
+        gap: 12px;
+        padding: 15px 0;
+    }
+
+    .gates-right-scatter>*:nth-child(1) {
+        transform: rotate(-3deg) !important;
+    }
+
+    .gates-right-scatter>*:nth-child(2) {
+        transform: rotate(2deg) !important;
+    }
+
+    .gates-right-scatter>*:nth-child(3) {
+        transform: rotate(-1.5deg) !important;
+    }
+
+    .gates-right-scatter>*:nth-child(4) {
+        transform: rotate(3deg) !important;
     }
 
     .gates-info-card {
         max-width: 100%;
+        width: 100%;
     }
 
     .gates-evidence-pile {
         width: 100%;
         min-height: auto;
         justify-content: center;
+        display: none;
+    }
+
+    /* Evidence board cards - 2 columns */
+    .evidence-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .evidence-item {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .evidence-item:nth-child(1) {
+        transform: rotate(-0.5deg) !important;
+    }
+
+    .evidence-item:nth-child(2) {
+        transform: rotate(0.8deg) !important;
+    }
+
+    .evidence-item:nth-child(3) {
+        transform: rotate(0.3deg) !important;
+    }
+
+    .evidence-item:nth-child(4) {
+        transform: rotate(-0.6deg) !important;
+    }
+
+    /* Q&A cards */
+    .qa-cards-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .qa-card:nth-child(1) {
+        transform: rotate(0.5deg) !important;
+    }
+
+    .qa-card:nth-child(2) {
+        transform: rotate(-0.6deg) !important;
+    }
+
+    .qa-card:nth-child(3) {
+        transform: rotate(-0.3deg) !important;
+    }
+
+    .qa-card:nth-child(4) {
+        transform: rotate(0.4deg) !important;
+    }
+
+    .qa-card:nth-child(5) {
+        transform: rotate(-0.5deg) !important;
+    }
+
+    .qa-card:nth-child(6) {
+        transform: rotate(0.3deg) !important;
     }
 }
 
@@ -4955,7 +5071,7 @@ a:focus-visible {
 
     .investigation-section {
         padding: 25px 12px;
-        width: 96%;
+        width: 95%;
         margin: 15px auto;
     }
 
@@ -4976,9 +5092,13 @@ a:focus-visible {
 
     .polaroid-frame {
         width: 100%;
-        max-width: 320px;
+        max-width: 100%;
         transform: rotate(-1deg);
         margin: 0 auto;
+        background: linear-gradient(180deg, #f8f5f0 0%, #e8e4dc 100%);
+        padding: 20px 20px 60px 20px;
+        box-shadow: 8px 12px 40px rgba(0, 0, 0, 0.6),
+            inset 0 0 0 1px rgba(255, 255, 255, 0.1);
     }
 
     .polaroid-image {
@@ -5011,8 +5131,16 @@ a:focus-visible {
     }
 
     .evidence-grid {
-        grid-template-columns: 1fr;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
         gap: 15px;
+    }
+
+    .evidence-item {
+        width: 100%;
+        min-width: unset;
+        min-height: 180px;
+        height: auto;
     }
 
     .questions-grid {
@@ -5021,8 +5149,9 @@ a:focus-visible {
 
     .board-title h2,
     .board-header h2 {
-        font-size: 1rem;
+        font-size: 1.1rem;
         letter-spacing: 2px;
+        text-align: center;
     }
 
     /* Evidence scatter - hide on mobile */
@@ -5043,6 +5172,8 @@ a:focus-visible {
     .evidence-item {
         padding: 22px 18px;
         width: 100%;
+        min-height: 160px;
+        height: auto;
     }
 
     .evidence-item:nth-child(1) {
@@ -5070,6 +5201,14 @@ a:focus-visible {
     }
 
     /* Gates section mobile */
+    .gates-wrapper {
+        gap: 30px;
+    }
+
+    .gates-row-top {
+        gap: 0px;
+    }
+
     .gates-right-scatter {
         grid-template-columns: repeat(2, auto);
         gap: 12px;
@@ -5105,7 +5244,7 @@ a:focus-visible {
 @media (max-width: 480px) {
     .investigation-section {
         padding: 20px 10px;
-        width: 98%;
+        width: 95%;
         margin: 10px auto;
     }
 
@@ -5114,8 +5253,9 @@ a:focus-visible {
     }
 
     .polaroid-frame {
-        max-width: 280px;
+        max-width: 100%;
         transform: rotate(-0.8deg);
+        padding: 15px 15px 50px 15px;
     }
 
     .person-info {
@@ -5134,8 +5274,9 @@ a:focus-visible {
 
     .board-title h2,
     .board-header h2 {
-        font-size: 0.85rem;
-        letter-spacing: 1px;
+        font-size: 0.95rem;
+        letter-spacing: 1.5px;
+        text-align: center;
     }
 
     .board-title .title-pin,
@@ -6144,18 +6285,37 @@ a:focus-visible {
     }
 
     .footer-note {
-        width: 65px;
-        height: 65px;
+        width: 80px;
+        height: 80px;
         padding: 8px;
         transform: rotate(0deg);
     }
 
+    .stamp-text-sub {
+        font-size: 0.75rem;
+        letter-spacing: 4px;
+    }
+
     /* Alternate rotations for notes to look realistic */
-    .footer-note:nth-child(1) { transform: rotate(-2deg); }
-    .footer-note:nth-child(2) { transform: rotate(1.5deg); }
-    .footer-note:nth-child(3) { transform: rotate(-1deg); }
-    .footer-note:nth-child(4) { transform: rotate(2deg); }
-    .footer-note:nth-child(5) { transform: rotate(-1.5deg); }
+    .footer-note:nth-child(1) {
+        transform: rotate(-2deg);
+    }
+
+    .footer-note:nth-child(2) {
+        transform: rotate(1.5deg);
+    }
+
+    .footer-note:nth-child(3) {
+        transform: rotate(-1deg);
+    }
+
+    .footer-note:nth-child(4) {
+        transform: rotate(2deg);
+    }
+
+    .footer-note:nth-child(5) {
+        transform: rotate(-1.5deg);
+    }
 
     .footer-note .note-icon-svg {
         width: 20px;
@@ -6226,9 +6386,14 @@ a:focus-visible {
     }
 
     .footer-note {
-        width: 55px;
-        height: 55px;
+        width: 70px;
+        height: 70px;
         padding: 6px;
+    }
+
+    .stamp-text-sub {
+        font-size: 0.7rem;
+        letter-spacing: 3px;
     }
 
     .footer-note .note-icon-svg {
@@ -6375,8 +6540,9 @@ a:focus-visible {
     }
 
     .input-area {
-        margin-left: 50px;
-        margin-right: 50px;
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
     }
 }
 
@@ -6503,7 +6669,10 @@ a:focus-visible {
         font-size: 0.8rem;
     }
 
-    /* Investigation sections */
+    /* Investigation sections - only for desktop row layout (above 1024px) */
+}
+
+@media (max-width: 1366px) and (min-width: 1025px) {
     .investigation-section {
         padding: 40px 30px;
     }
@@ -6561,7 +6730,7 @@ a:focus-visible {
     }
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 1280px) and (min-width: 1025px) {
     .hero-content {
         width: 98%;
         gap: 20px;
@@ -6652,6 +6821,30 @@ a:focus-visible {
     }
 }
 
+/* Hero/panel styles that also apply below 1024px */
+@media (max-width: 1280px) {
+    .hero-content {
+        width: 98%;
+        gap: 20px;
+    }
+
+    .title-top {
+        font-size: 1.8rem;
+    }
+
+    .title-bottom {
+        font-size: 2.4rem;
+    }
+
+    .tagline {
+        font-size: 0.75rem;
+    }
+
+    .description {
+        font-size: 0.82rem;
+    }
+}
+
 /* ============================================
    OVERFLOW FIXES - All breakpoints
    ============================================ */
@@ -6728,10 +6921,21 @@ body::after {
         padding: 15px;
     }
 
-    .gates-right-scatter > *:nth-child(1) { transform: rotate(-4deg) !important; }
-    .gates-right-scatter > *:nth-child(2) { transform: rotate(3deg) !important; }
-    .gates-right-scatter > *:nth-child(3) { transform: rotate(-1deg) !important; }
-    .gates-right-scatter > *:nth-child(4) { transform: rotate(5deg) !important; }
+    .gates-right-scatter>*:nth-child(1) {
+        transform: rotate(-4deg) !important;
+    }
+
+    .gates-right-scatter>*:nth-child(2) {
+        transform: rotate(3deg) !important;
+    }
+
+    .gates-right-scatter>*:nth-child(3) {
+        transform: rotate(-1deg) !important;
+    }
+
+    .gates-right-scatter>*:nth-child(4) {
+        transform: rotate(5deg) !important;
+    }
 
     .gates-evidence-pile {
         overflow: hidden;
@@ -6782,6 +6986,7 @@ body::after {
         width: 100%;
         max-width: 100%;
         box-sizing: border-box;
+        padding: 0;
     }
 
     .input-area {
@@ -6801,7 +7006,7 @@ body::after {
 
     /* Investigation sections */
     .investigation-section {
-        width: 96%;
+        width: 95%;
         max-width: 100%;
         box-sizing: border-box;
         padding: 25px 12px;
@@ -6831,9 +7036,13 @@ body::after {
 
     .polaroid-frame {
         width: 100%;
-        max-width: 320px;
+        max-width: 100%;
         margin: 0 auto;
         transform: rotate(-1deg);
+        background: linear-gradient(180deg, #f8f5f0 0%, #e8e4dc 100%);
+        padding: 20px 20px 60px 20px;
+        box-shadow: 8px 12px 40px rgba(0, 0, 0, 0.6),
+            inset 0 0 0 1px rgba(255, 255, 255, 0.1);
     }
 
     .person-info {
@@ -6875,11 +7084,25 @@ body::after {
     }
 
     /* Keep slight rotations on scatter items for realism */
-    .gates-right-scatter > *:nth-child(1) { transform: rotate(-3deg) !important; }
-    .gates-right-scatter > *:nth-child(2) { transform: rotate(2deg) !important; }
-    .gates-right-scatter > *:nth-child(3) { transform: rotate(-1deg) !important; }
-    .gates-right-scatter > *:nth-child(4) { transform: rotate(4deg) !important; }
-    .gates-right-scatter > *:nth-child(5) { transform: rotate(-2deg) !important; }
+    .gates-right-scatter>*:nth-child(1) {
+        transform: rotate(-3deg) !important;
+    }
+
+    .gates-right-scatter>*:nth-child(2) {
+        transform: rotate(2deg) !important;
+    }
+
+    .gates-right-scatter>*:nth-child(3) {
+        transform: rotate(-1deg) !important;
+    }
+
+    .gates-right-scatter>*:nth-child(4) {
+        transform: rotate(4deg) !important;
+    }
+
+    .gates-right-scatter>*:nth-child(5) {
+        transform: rotate(-2deg) !important;
+    }
 
     .gates-evidence-pile {
         display: none;
@@ -6908,12 +7131,25 @@ body::after {
         width: 100%;
         max-width: 100%;
         margin: 0;
+        min-height: 160px;
+        height: auto;
     }
 
-    .evidence-item:nth-child(1) { transform: rotate(-0.5deg) !important; }
-    .evidence-item:nth-child(2) { transform: rotate(0.7deg) !important; }
-    .evidence-item:nth-child(3) { transform: rotate(-0.3deg) !important; }
-    .evidence-item:nth-child(4) { transform: rotate(0.5deg) !important; }
+    .evidence-item:nth-child(1) {
+        transform: rotate(-0.5deg) !important;
+    }
+
+    .evidence-item:nth-child(2) {
+        transform: rotate(0.7deg) !important;
+    }
+
+    .evidence-item:nth-child(3) {
+        transform: rotate(-0.3deg) !important;
+    }
+
+    .evidence-item:nth-child(4) {
+        transform: rotate(0.5deg) !important;
+    }
 
     /* Q&A section */
     .qa-investigation-wall {
@@ -6941,12 +7177,29 @@ body::after {
         margin: 0;
     }
 
-    .qa-card:nth-child(1) { transform: rotate(0.5deg) !important; }
-    .qa-card:nth-child(2) { transform: rotate(-0.8deg) !important; }
-    .qa-card:nth-child(3) { transform: rotate(0.3deg) !important; }
-    .qa-card:nth-child(4) { transform: rotate(-0.5deg) !important; }
-    .qa-card:nth-child(5) { transform: rotate(0.7deg) !important; }
-    .qa-card:nth-child(6) { transform: rotate(-0.4deg) !important; }
+    .qa-card:nth-child(1) {
+        transform: rotate(0.5deg) !important;
+    }
+
+    .qa-card:nth-child(2) {
+        transform: rotate(-0.8deg) !important;
+    }
+
+    .qa-card:nth-child(3) {
+        transform: rotate(0.3deg) !important;
+    }
+
+    .qa-card:nth-child(4) {
+        transform: rotate(-0.5deg) !important;
+    }
+
+    .qa-card:nth-child(5) {
+        transform: rotate(0.7deg) !important;
+    }
+
+    .qa-card:nth-child(6) {
+        transform: rotate(-0.4deg) !important;
+    }
 
     .board-decorations {
         display: none;
@@ -7014,16 +7267,21 @@ body::after {
         padding: 25px 12px 22px;
     }
 
-    /* Title needs to wrap on very small screens */
+    /* Title on one line, centered */
     .title {
-        flex-direction: column;
+        margin-top: 32px;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: baseline;
+        text-align: center;
         gap: 5px;
+        white-space: nowrap;
     }
 
     .title-top,
     .title-bottom {
-        white-space: normal;
-        word-break: break-word;
+        white-space: nowrap;
     }
 
     /* Contract box smaller */
@@ -7072,8 +7330,9 @@ body::after {
     }
 
     .polaroid-frame {
-        max-width: 260px;
+        max-width: 100%;
         transform: rotate(-0.5deg);
+        padding: 15px 15px 50px 15px;
     }
 
     .polaroid-caption {
@@ -7183,8 +7442,9 @@ body::after {
     }
 
     .board-title h2 {
-        font-size: 0.75rem;
+        font-size: 0.85rem;
         letter-spacing: 1px;
+        text-align: center;
     }
 
     .title-pin {
@@ -7222,8 +7482,9 @@ body::after {
     }
 
     .qa-title {
-        font-size: 1rem;
+        font-size: 1.1rem;
         letter-spacing: 1px;
+        text-align: center;
     }
 
     .qa-card {
@@ -7249,9 +7510,14 @@ body::after {
     }
 
     .footer-note {
-        width: 52px;
-        height: 52px;
+        width: 67px;
+        height: 67px;
         padding: 6px;
+    }
+
+    .stamp-text-sub {
+        font-size: 0.72rem;
+        letter-spacing: 3px;
     }
 
     .footer-note .note-icon-svg {
@@ -7303,12 +7569,20 @@ body::after {
         padding: 22px 10px 20px;
     }
 
+    .title {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        white-space: nowrap;
+        gap: 4px;
+    }
+
     .title-top {
-        font-size: 1.1rem;
+        font-size: 0.9rem;
     }
 
     .title-bottom {
-        font-size: 1.4rem;
+        font-size: 1.15rem;
     }
 
     .description {
@@ -7392,7 +7666,8 @@ body::after {
     }
 
     .polaroid-frame {
-        max-width: 230px;
+        max-width: 100%;
+        padding: 12px 12px 40px 12px;
     }
 
     .person-info {
@@ -7445,7 +7720,8 @@ body::after {
 
     /* Q&A */
     .qa-title {
-        font-size: 0.85rem;
+        font-size: 0.95rem;
+        text-align: center;
     }
 
     .qa-card {
@@ -7475,9 +7751,14 @@ body::after {
     }
 
     .footer-note {
-        width: 46px;
-        height: 46px;
+        width: 61px;
+        height: 61px;
         padding: 4px;
+    }
+
+    .stamp-text-sub {
+        font-size: 0.65rem;
+        letter-spacing: 2px;
     }
 
     .footer-note .note-icon-svg {
