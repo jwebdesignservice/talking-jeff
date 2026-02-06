@@ -1024,6 +1024,7 @@ body::after {
     justify-content: center;
     gap: 10px;
     width: 100%;
+    max-width: 580px;
     margin-top: 4px;
     position: relative;
     z-index: 10;
@@ -1142,9 +1143,8 @@ body::after {
     display: flex;
     flex-direction: column;
     gap: 0;
-    width: 100%;
-    margin-left: 0;
-    margin-right: 0;
+    margin-left: 60px;
+    margin-right: 60px;
 }
 
 .input-box {
@@ -1527,8 +1527,8 @@ body::after {
     }
 
     .info-panel {
-        width: 100%;
-        max-width: 600px;
+        width: 90% !important;
+        max-width: 760px !important;
         margin-top: 20px;
     }
 
@@ -1704,59 +1704,20 @@ body::after {
         font-size: 0.75rem;
     }
 
-    /* Interactive zone - stack buttons horizontally below input */
+    /* Keep desktop layout for center section on tablet */
     .interactive-zone {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
         max-width: 100%;
-        margin-top: 5px;
         padding: 0;
     }
 
-    .btn-strip {
-        position: relative;
-        bottom: auto;
-        left: auto;
-        right: auto;
-        flex-direction: row;
-        justify-content: center;
-        gap: 8px;
-    }
-
-    .btn-strip.left-strip {
-        order: 2;
-    }
-
-    .btn-strip.right-strip {
-        order: 3;
-    }
-
     .input-area {
-        order: 1;
-        width: 100%;
-        margin-left: 0;
-        margin-right: 0;
-    }
-
-    .input-box {
-        border-width: 1px;
+        margin-left: 50px;
+        margin-right: 50px;
     }
 
     .text-input {
         padding: 12px 14px;
-        font-size: 0.75rem;
-    }
-
-    .input-buttons .send-btn,
-    .input-buttons .mic-btn {
-        width: 60px;
-        padding: 6px 4px;
-    }
-
-    .input-buttons .send-btn span,
-    .input-buttons .mic-btn span {
-        font-size: 0.45rem;
+        font-size: 0.8rem;
     }
 
     .input-buttons .send-btn svg,
@@ -1893,8 +1854,10 @@ body::after {
     }
 
     .character-frame {
-        height: 300px;
+        height: auto;
+        aspect-ratio: 1 / 1;
         padding: 8px 8px 40px 8px;
+        margin-top: 15px;
     }
 
     .character-frame::before {
@@ -1967,6 +1930,40 @@ body::after {
         width: 12px;
         height: 12px;
     }
+
+    /* Mobile only: stack buttons below input */
+    .interactive-zone {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        max-width: 100%;
+        margin-top: 5px;
+    }
+
+    .btn-strip {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        right: auto;
+        flex-direction: row;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .btn-strip.left-strip {
+        order: 2;
+    }
+
+    .btn-strip.right-strip {
+        order: 3;
+    }
+
+    .input-area {
+        order: 1;
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
 }
 
 /* ============================================
@@ -2006,8 +2003,10 @@ body::after {
     }
 
     .character-frame {
-        height: 260px;
+        height: auto;
+        aspect-ratio: 1 / 1;
         padding: 6px 6px 35px 6px;
+        margin-top: 15px;
     }
 
     .speech-bubble {
@@ -4861,8 +4860,33 @@ a:focus-visible {
         padding: 40px 20px;
     }
 
+    /* Hide the question and answer boxes on mobile/tablet */
+    .modal-question-card {
+        background: none;
+        box-shadow: none;
+        padding: 15px;
+    }
+
+    .modal-answer-note {
+        background: none;
+        box-shadow: none;
+        padding: 15px;
+        transform: none !important;
+    }
+
+    .modal-question-card .thumbtack,
+    .modal-answer-note .thumbtack,
+    .modal-answer-note .note-shadow {
+        display: none;
+    }
+
     .modal-question-text {
         font-size: 1.1rem;
+        color: #fff;
+    }
+
+    .answer-text {
+        color: #ddd;
     }
 
     .answer-text {
@@ -5170,7 +5194,7 @@ a:focus-visible {
 
     /* Evidence cards - slight rotations for realism */
     .evidence-item {
-        padding: 22px 18px;
+        padding: 37px 18px 22px 18px;
         width: 100%;
         min-height: 160px;
         height: auto;
@@ -5287,7 +5311,7 @@ a:focus-visible {
 
     /* Evidence items - keep slight rotation */
     .evidence-item {
-        padding: 18px 14px;
+        padding: 33px 14px 18px 14px;
     }
 
     .item-content h4 {
@@ -6573,6 +6597,73 @@ a:focus-visible {
 }
 
 /* ============================================
+   RESPONSIVE - TABLET/SMALL DESKTOP (580px - 1025px)
+   Maintain desktop-style center section layout
+   ============================================ */
+
+@media (max-width: 1025px) and (min-width: 580px) {
+
+    /* Center section - keep desktop layout */
+    .center-section {
+        width: 100%;
+        max-width: 600px;
+    }
+
+    .character-wrapper {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .character-frame {
+        height: auto;
+        aspect-ratio: 1 / 1;
+    }
+
+    /* Interactive zone - desktop style with buttons on sides */
+    .interactive-zone {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        max-width: 100%;
+        position: relative;
+    }
+
+    .btn-strip {
+        position: absolute;
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 6px;
+        bottom: 0;
+    }
+
+    .btn-strip.left-strip {
+        left: 0;
+    }
+
+    .btn-strip.right-strip {
+        right: 0;
+    }
+
+    .input-area {
+        flex: 1;
+        margin-left: 60px;
+        margin-right: 60px;
+    }
+
+    .strip-btn {
+        width: 44px;
+        height: 44px;
+    }
+
+    .strip-btn svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+/* ============================================
    RESPONSIVE - SMALLER DESKTOP (1440px - 1200px)
    Fixes for 1366px and similar laptop screens
    ============================================ */
@@ -6705,6 +6796,77 @@ a:focus-visible {
 
     .gates-info-card {
         max-width: 400px;
+    }
+}
+
+/* Gates/Clinton section - Full width centered layout for 1200px to 1020px */
+@media (max-width: 1200px) and (min-width: 1020px) {
+    .investigation-section-large.gates-layout {
+        padding: 60px 20px;
+    }
+
+    .gates-wrapper {
+        max-width: 100%;
+        width: 100%;
+        align-items: center;
+    }
+
+    .gates-row-top {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        width: 100%;
+    }
+
+    .gates-photo-frame {
+        width: 100%;
+        max-width: 700px;
+    }
+
+    .gates-right-scatter {
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 0 20px;
+    }
+
+    .gates-right-scatter>* {
+        flex: 1 1 auto;
+        min-width: 120px;
+        max-width: 180px;
+    }
+
+    .gates-row-bottom {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        width: 100%;
+    }
+
+    .gates-info-card {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        text-align: left;
+    }
+
+    .gates-evidence-pile {
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 0 20px;
+    }
+
+    .gates-evidence-pile>* {
+        flex: 1 1 auto;
+        min-width: 120px;
+        max-width: 180px;
     }
 
     /* Evidence board */
@@ -6946,6 +7108,34 @@ body::after {
     .qa-modal-content {
         max-width: 95vw;
         padding: 30px 20px;
+    }
+
+    /* Hide the question and answer boxes on tablet */
+    .modal-question-card {
+        background: none;
+        box-shadow: none;
+        padding: 15px;
+    }
+
+    .modal-answer-note {
+        background: none;
+        box-shadow: none;
+        padding: 15px;
+        transform: none !important;
+    }
+
+    .modal-question-card .thumbtack,
+    .modal-answer-note .thumbtack,
+    .modal-answer-note .note-shadow {
+        display: none;
+    }
+
+    .modal-question-text {
+        color: #fff;
+    }
+
+    .answer-text {
+        color: #ddd;
     }
 
     /* Footer file stacks - already hidden at 1200px */
@@ -7302,7 +7492,14 @@ body::after {
     }
 
     .character-frame {
-        height: 280px;
+        height: auto;
+        aspect-ratio: 1 / 1;
+        margin-top: 15px;
+    }
+
+    .character-wrapper {
+        max-width: 100%;
+        width: 100%;
     }
 
     .speech-bubble {
@@ -7453,7 +7650,7 @@ body::after {
     }
 
     .evidence-item {
-        padding: 16px 12px;
+        padding: 31px 12px 16px 12px;
     }
 
     .doc-stamp {
@@ -7617,8 +7814,10 @@ body::after {
     }
 
     .character-frame {
-        height: 240px;
+        height: auto;
+        aspect-ratio: 1 / 1;
         padding: 5px 5px 30px 5px;
+        margin-top: 15px;
     }
 
     .speech-bubble {
@@ -7707,7 +7906,7 @@ body::after {
 
     /* Evidence board */
     .evidence-item {
-        padding: 14px 10px;
+        padding: 29px 10px 14px 10px;
     }
 
     .item-content h4 {
