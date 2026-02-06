@@ -8071,13 +8071,14 @@ body::after {
     animation: fadeInTalking 0.8s ease-out 0.3s backwards;
 }
 
-/* JEFF - Clean text with stamp animation */
+/* JEFF - Stamp style with red border and transparent background */
 .loader-title-jeff {
     font-size: clamp(4rem, 14vw, 10rem);
     color: #DC143C;
     background: transparent;
-    border: none;
-    padding: 0;
+    border: 8px solid #DC143C;
+    border-radius: 7px;
+    padding: 0.05em 0.2em;
     text-shadow:
         2px 2px 0 rgba(0, 0, 0, 0.3),
         4px 4px 15px rgba(0, 0, 0, 0.4);
@@ -8555,6 +8556,7 @@ body::after {
     .loader-title-jeff {
         font-size: clamp(3rem, 12vw, 7rem);
         letter-spacing: 3px;
+        border-width: 6px;
     }
 
     .scatter-item {
@@ -8576,6 +8578,8 @@ body::after {
     .loader-title-jeff {
         font-size: clamp(2.5rem, 14vw, 5rem);
         letter-spacing: 2px;
+        border-width: 5px;
+        padding: 0.08em 0.18em;
     }
 
     .scatter-item {
@@ -8600,6 +8604,8 @@ body::after {
     .loader-title-jeff {
         font-size: clamp(2rem, 16vw, 3.5rem);
         letter-spacing: 1px;
+        border-width: 4px;
+        padding: 0.08em 0.16em;
     }
 
     .scatter-item {
