@@ -982,7 +982,7 @@ body::after {
     color: #333;
     line-height: 1.5;
     text-align: left;
-    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-family: 'Comic Neue', 'Comic Sans MS', cursive, sans-serif;
 }
 
 .bubble-inner p {
