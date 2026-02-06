@@ -17,92 +17,109 @@
     <!-- INVESTIGATION PRELOADER -->
     <div class="preloader" id="preloader">
         <div class="preloader-bg">
-            <!-- Evidence board cork texture -->
             <div class="preloader-cork"></div>
+        </div>
 
-            <!-- Red investigation strings -->
-            <svg class="preloader-strings" viewBox="0 0 400 400" preserveAspectRatio="none">
-                <path class="string-anim s1" d="M50 50 Q200 100 350 80" />
-                <path class="string-anim s2" d="M30 150 Q150 200 370 170" />
-                <path class="string-anim s3" d="M60 280 Q200 320 340 290" />
-                <path class="string-anim s4" d="M80 350 Q250 380 350 340" />
-                <!-- Diagonal strings -->
-                <path class="string-anim s5" d="M50 50 Q200 200 350 350" />
-                <path class="string-anim s6" d="M350 50 Q200 200 50 350" />
-            </svg>
+        <!-- Scattered Documents - All over screen (28 items) -->
+        <div class="scattered-docs-full">
+            <!-- Top row -->
+            <div class="scatter-item folder" style="--x: -45vw; --y: -42vh; --rot: -12deg; --delay: 0.1s;">
+                <div class="folder-flap"></div>
+            </div>
+            <div class="scatter-item file-paper" style="--x: -32vw; --y: -40vh; --rot: 8deg; --delay: 0.15s;">
+                <div class="paper-lines"></div>
+            </div>
+            <div class="scatter-item sticky-note yellow" style="--x: -18vw; --y: -43vh; --rot: -5deg; --delay: 0.2s;">
+                <span>URGENT</span></div>
+            <div class="scatter-item polaroid-doc" style="--x: 0vw; --y: -41vh; --rot: 12deg; --delay: 0.12s;">
+                <div class="polaroid-inner"></div>
+            </div>
+            <div class="scatter-item envelope" style="--x: 18vw; --y: -44vh; --rot: -8deg; --delay: 0.22s;">
+                <div class="envelope-flap"></div>
+            </div>
+            <div class="scatter-item folder" style="--x: 35vw; --y: -40vh; --rot: 15deg; --delay: 0.18s;">
+                <div class="folder-flap"></div>
+            </div>
+            <div class="scatter-item file-paper" style="--x: 45vw; --y: -42vh; --rot: -6deg; --delay: 0.25s;">
+                <div class="paper-lines"></div>
+                <div class="paper-stamp">SECRET</div>
+            </div>
 
-            <!-- Push pins at intersections -->
-            <div class="preloader-pins">
-                <div class="loader-pin red" style="top: 12%; left: 12%;"></div>
-                <div class="loader-pin yellow" style="top: 12%; right: 12%;"></div>
-                <div class="loader-pin red" style="top: 37%; left: 8%;"></div>
-                <div class="loader-pin green" style="top: 37%; right: 8%;"></div>
-                <div class="loader-pin yellow" style="top: 70%; left: 15%;"></div>
-                <div class="loader-pin red" style="top: 70%; right: 15%;"></div>
-                <div class="loader-pin red" style="top: 87%; left: 20%;"></div>
-                <div class="loader-pin yellow" style="top: 87%; right: 12%;"></div>
+            <!-- Upper area -->
+            <div class="scatter-item file-paper" style="--x: -44vw; --y: -25vh; --rot: 6deg; --delay: 0.28s;">
+                <div class="paper-lines"></div>
+                <div class="paper-stamp">CLASSIFIED</div>
+            </div>
+            <div class="scatter-item sticky-note pink" style="--x: -35vw; --y: -28vh; --rot: -10deg; --delay: 0.3s;">
+                <span>TOP SECRET</span></div>
+            <div class="scatter-item newspaper-clip" style="--x: 32vw; --y: -26vh; --rot: 7deg; --delay: 0.32s;"></div>
+            <div class="scatter-item evidence-photo" style="--x: 44vw; --y: -24vh; --rot: -6deg; --delay: 0.35s;">
+                <div class="photo-content"></div><span class="photo-date">2006</span>
+            </div>
+
+            <!-- Left side -->
+            <div class="scatter-item folder" style="--x: -46vw; --y: -8vh; --rot: -14deg; --delay: 0.38s;">
+                <div class="folder-flap"></div>
+            </div>
+            <div class="scatter-item polaroid-doc" style="--x: -45vw; --y: 8vh; --rot: 10deg; --delay: 0.4s;">
+                <div class="polaroid-inner"></div>
+            </div>
+            <div class="scatter-item sticky-note yellow" style="--x: -44vw; --y: 22vh; --rot: -7deg; --delay: 0.42s;">
+                <span>REVIEW</span></div>
+
+            <!-- Right side -->
+            <div class="scatter-item file-paper" style="--x: 46vw; --y: -5vh; --rot: 11deg; --delay: 0.45s;">
+                <div class="paper-lines"></div>
+            </div>
+            <div class="scatter-item envelope" style="--x: 45vw; --y: 12vh; --rot: -9deg; --delay: 0.48s;">
+                <div class="envelope-flap"></div>
+            </div>
+            <div class="scatter-item folder" style="--x: 46vw; --y: 25vh; --rot: 8deg; --delay: 0.5s;">
+                <div class="folder-flap"></div>
+            </div>
+
+            <!-- Lower area -->
+            <div class="scatter-item newspaper-clip" style="--x: -40vw; --y: 35vh; --rot: 5deg; --delay: 0.52s;"></div>
+            <div class="scatter-item evidence-photo" style="--x: -28vw; --y: 38vh; --rot: -12deg; --delay: 0.55s;">
+                <div class="photo-content"></div><span class="photo-date">2008</span>
+            </div>
+            <div class="scatter-item sticky-note pink" style="--x: 25vw; --y: 36vh; --rot: 9deg; --delay: 0.58s;">
+                <span>EVIDENCE</span></div>
+            <div class="scatter-item file-paper" style="--x: 40vw; --y: 38vh; --rot: -7deg; --delay: 0.6s;">
+                <div class="paper-lines"></div>
+                <div class="paper-stamp">REDACTED</div>
+            </div>
+
+            <!-- Bottom row -->
+            <div class="scatter-item folder" style="--x: -42vw; --y: 44vh; --rot: -10deg; --delay: 0.62s;">
+                <div class="folder-flap"></div>
+            </div>
+            <div class="scatter-item polaroid-doc" style="--x: -28vw; --y: 42vh; --rot: 14deg; --delay: 0.65s;">
+                <div class="polaroid-inner"></div>
+            </div>
+            <div class="scatter-item envelope" style="--x: -12vw; --y: 44vh; --rot: -6deg; --delay: 0.68s;">
+                <div class="envelope-flap"></div>
+            </div>
+            <div class="scatter-item sticky-note yellow" style="--x: 10vw; --y: 43vh; --rot: 8deg; --delay: 0.7s;">
+                <span>PRIORITY</span></div>
+            <div class="scatter-item file-paper" style="--x: 28vw; --y: 44vh; --rot: -11deg; --delay: 0.72s;">
+                <div class="paper-lines"></div>
+            </div>
+            <div class="scatter-item folder" style="--x: 44vw; --y: 42vh; --rot: 12deg; --delay: 0.75s;">
+                <div class="folder-flap"></div>
+            </div>
+            <div class="scatter-item evidence-photo" style="--x: -15vw; --y: 40vh; --rot: 5deg; --delay: 0.78s;">
+                <div class="photo-content"></div><span class="photo-date">2010</span>
             </div>
         </div>
 
         <div class="preloader-content">
-            <!-- Central case file -->
-            <div class="case-file-loader">
-                <div class="file-folder">
-                    <div class="folder-tab">
-                        <span>CASE FILE</span>
-                    </div>
-                    <div class="folder-body">
-                        <!-- Classified stamp -->
-                        <div class="file-stamp">TOP SECRET</div>
-
-                        <!-- Subject photo placeholder -->
-                        <div class="file-photo">
-                            <div class="photo-frame">
-                                <div class="photo-silhouette"></div>
-                                <div class="photo-scan"></div>
-                            </div>
-                            <div class="photo-label">PERSON OF INTEREST</div>
-                        </div>
-
-                        <!-- Document lines -->
-                        <div class="file-docs">
-                            <div class="doc-line"></div>
-                            <div class="doc-line redacted"></div>
-                            <div class="doc-line short"></div>
-                            <div class="doc-line"></div>
-                            <div class="doc-line redacted"></div>
-                        </div>
-
-                        <!-- Evidence marker -->
-                        <div class="evidence-tag">
-                            <span>EXHIBIT A</span>
-                        </div>
-                    </div>
+            <!-- Main Title - Stamped effect -->
+            <div class="loader-title-wrapper">
+                <div class="loader-title">
+                    <span class="loader-title-talking">TALKING</span>
+                    <span class="loader-title-jeff">JEFF</span>
                 </div>
-
-                <!-- Attached sticky notes -->
-                <div class="loader-sticky yellow" style="top: -20px; right: -30px; transform: rotate(8deg);">
-                    <div class="sticky-tape"></div>
-                    <p>PRIORITY</p>
-                </div>
-                <div class="loader-sticky pink" style="bottom: -15px; left: -25px; transform: rotate(-6deg);">
-                    <div class="sticky-tape"></div>
-                    <p>URGENT</p>
-                </div>
-            </div>
-
-            <!-- Floating evidence items -->
-            <div class="floating-evidence">
-                <div class="float-item polaroid" style="--delay: 0s; --x: -180px; --y: -80px; --rot: -12deg;">
-                    <div class="mini-photo"></div>
-                </div>
-                <div class="float-item polaroid" style="--delay: 0.3s; --x: 180px; --y: -60px; --rot: 8deg;">
-                    <div class="mini-photo"></div>
-                </div>
-                <div class="float-item document" style="--delay: 0.5s; --x: -160px; --y: 100px; --rot: -8deg;"></div>
-                <div class="float-item document" style="--delay: 0.2s; --x: 170px; --y: 90px; --rot: 10deg;"></div>
-                <div class="float-item fingerprint" style="--delay: 0.4s; --x: -200px; --y: 10px; --rot: -5deg;"></div>
-                <div class="float-item newspaper" style="--delay: 0.6s; --x: 200px; --y: 0px; --rot: 6deg;"></div>
             </div>
 
             <!-- Loading text -->
@@ -127,9 +144,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- Scan effect overlay -->
-        <div class="scan-overlay"></div>
 
         <!-- Film grain -->
         <div class="film-grain"></div>
