@@ -1,5 +1,5 @@
 /**
- * Talking Epstein - Investigation AI
+ * Talking Jeff - Investigation AI
  * Main Application Controller
  * 
  * Integrates: Claude AI + ElevenLabs TTS + HeyGen Avatar

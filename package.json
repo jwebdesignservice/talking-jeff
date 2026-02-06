@@ -1,7 +1,7 @@
 {
   "name": "talking-epstein-investigation",
   "version": "1.0.0",
-  "description": "Talking Epstein Investigation - Interactive AI Experience",
+  "description": "Talking Jeff Investigation - Interactive AI Experience",
   "scripts": {
     "start": "node server/server.js",
     "build": "echo 'No build step required'"

@@ -1,7 +1,7 @@
 {
   "name": "talking-epstein-investigation-server",
   "version": "2.0.0",
-  "description": "Backend server for Talking Epstein Investigation - Claude AI + ElevenLabs + HeyGen",
+  "description": "Backend server for Talking Jeff Investigation - Claude AI + ElevenLabs + HeyGen",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

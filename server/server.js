@@ -1,5 +1,5 @@
 /**
- * Backend Server for Talking Epstein Investigation
+ * Backend Server for Talking Jeff Investigation
  * Handles secure API calls to Claude, ElevenLabs, and HeyGen
  */
 

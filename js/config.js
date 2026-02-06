@@ -1,5 +1,5 @@
 /**
- * Configuration file for Talking Epstein Investigation
+ * Configuration file for Talking Jeff Investigation
  * 
  * IMPORTANT: For production, move API keys to environment variables
  * and use a backend server to make API calls securely.
