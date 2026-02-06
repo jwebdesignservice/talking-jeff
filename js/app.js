@@ -501,7 +501,96 @@ class TalkingInvestigationApp {
 // Initialize app when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     window.app = new TalkingInvestigationApp();
+    
+    // Initialize preloader
+    initPreloader();
 });
+
+/**
+ * Investigation Preloader
+ * Typewriter effect and loading sequence
+ */
+function initPreloader() {
+    const preloader = document.getElementById('preloader');
+    if (!preloader) return;
+    
+    const typewriterEl = preloader.querySelector('.typewriter-text');
+    
+    // Investigation-themed loading messages
+    const messages = [
+        'ACCESSING SECURE FILES...',
+        'DECRYPTING EVIDENCE...',
+        'LOADING CASE DATA...',
+        'VERIFYING CLEARANCE...',
+        'SCANNING DOCUMENTS...',
+        'CROSS-REFERENCING...',
+        'RETRIEVING INTEL...',
+        'INITIALIZING SYSTEM...'
+    ];
+    
+    let messageIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typeSpeed = 80;
+    
+    function typeMessage() {
+        const currentMessage = messages[messageIndex];
+        
+        if (isDeleting) {
+            // Delete characters
+            typewriterEl.textContent = currentMessage.substring(0, charIndex - 1);
+            charIndex--;
+            typeSpeed = 40;
+            
+            if (charIndex === 0) {
+                isDeleting = false;
+                messageIndex = (messageIndex + 1) % messages.length;
+                typeSpeed = 300; // Pause before typing next
+            }
+        } else {
+            // Type characters
+            typewriterEl.textContent = currentMessage.substring(0, charIndex + 1);
+            charIndex++;
+            typeSpeed = 60 + Math.random() * 60; // Varied speed for realism
+            
+            if (charIndex === currentMessage.length) {
+                isDeleting = true;
+                typeSpeed = 1200; // Pause at end of message
+            }
+        }
+        
+        // Continue typing if preloader is still visible
+        if (!preloader.classList.contains('loaded')) {
+            setTimeout(typeMessage, typeSpeed);
+        }
+    }
+    
+    // Start typewriter after a short delay
+    setTimeout(typeMessage, 500);
+    
+    // Hide preloader when page is fully loaded
+    window.addEventListener('load', function() {
+        // Minimum display time for the animation to complete
+        const minDisplayTime = 3000;
+        const startTime = performance.now();
+        
+        function hidePreloader() {
+            const elapsed = performance.now() - startTime;
+            const remainingTime = Math.max(0, minDisplayTime - elapsed);
+            
+            setTimeout(() => {
+                preloader.classList.add('loaded');
+                
+                // Remove from DOM after transition
+                setTimeout(() => {
+                    preloader.remove();
+                }, 600);
+            }, remainingTime);
+        }
+        
+        hidePreloader();
+    });
+}
 
 // Console branding
 console.log(`

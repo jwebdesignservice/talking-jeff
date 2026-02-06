@@ -14,6 +14,127 @@
 </head>
 
 <body>
+    <!-- INVESTIGATION PRELOADER -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-bg">
+            <!-- Evidence board cork texture -->
+            <div class="preloader-cork"></div>
+            
+            <!-- Red investigation strings -->
+            <svg class="preloader-strings" viewBox="0 0 400 400" preserveAspectRatio="none">
+                <path class="string-anim s1" d="M50 50 Q200 100 350 80" />
+                <path class="string-anim s2" d="M30 150 Q150 200 370 170" />
+                <path class="string-anim s3" d="M60 280 Q200 320 340 290" />
+                <path class="string-anim s4" d="M80 350 Q250 380 350 340" />
+                <!-- Diagonal strings -->
+                <path class="string-anim s5" d="M50 50 Q200 200 350 350" />
+                <path class="string-anim s6" d="M350 50 Q200 200 50 350" />
+            </svg>
+            
+            <!-- Push pins at intersections -->
+            <div class="preloader-pins">
+                <div class="loader-pin red" style="top: 12%; left: 12%;"></div>
+                <div class="loader-pin yellow" style="top: 12%; right: 12%;"></div>
+                <div class="loader-pin red" style="top: 37%; left: 8%;"></div>
+                <div class="loader-pin green" style="top: 37%; right: 8%;"></div>
+                <div class="loader-pin yellow" style="top: 70%; left: 15%;"></div>
+                <div class="loader-pin red" style="top: 70%; right: 15%;"></div>
+                <div class="loader-pin red" style="top: 87%; left: 20%;"></div>
+                <div class="loader-pin yellow" style="top: 87%; right: 12%;"></div>
+            </div>
+        </div>
+        
+        <div class="preloader-content">
+            <!-- Central case file -->
+            <div class="case-file-loader">
+                <div class="file-folder">
+                    <div class="folder-tab">
+                        <span>CASE FILE</span>
+                    </div>
+                    <div class="folder-body">
+                        <!-- Classified stamp -->
+                        <div class="file-stamp">TOP SECRET</div>
+                        
+                        <!-- Subject photo placeholder -->
+                        <div class="file-photo">
+                            <div class="photo-frame">
+                                <div class="photo-silhouette"></div>
+                                <div class="photo-scan"></div>
+                            </div>
+                            <div class="photo-label">PERSON OF INTEREST</div>
+                        </div>
+                        
+                        <!-- Document lines -->
+                        <div class="file-docs">
+                            <div class="doc-line"></div>
+                            <div class="doc-line redacted"></div>
+                            <div class="doc-line short"></div>
+                            <div class="doc-line"></div>
+                            <div class="doc-line redacted"></div>
+                        </div>
+                        
+                        <!-- Evidence marker -->
+                        <div class="evidence-tag">
+                            <span>EXHIBIT A</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Attached sticky notes -->
+                <div class="loader-sticky yellow" style="top: -20px; right: -30px; transform: rotate(8deg);">
+                    <div class="sticky-tape"></div>
+                    <p>PRIORITY</p>
+                </div>
+                <div class="loader-sticky pink" style="bottom: -15px; left: -25px; transform: rotate(-6deg);">
+                    <div class="sticky-tape"></div>
+                    <p>URGENT</p>
+                </div>
+            </div>
+            
+            <!-- Floating evidence items -->
+            <div class="floating-evidence">
+                <div class="float-item polaroid" style="--delay: 0s; --x: -180px; --y: -80px; --rot: -12deg;">
+                    <div class="mini-photo"></div>
+                </div>
+                <div class="float-item polaroid" style="--delay: 0.3s; --x: 180px; --y: -60px; --rot: 8deg;">
+                    <div class="mini-photo"></div>
+                </div>
+                <div class="float-item document" style="--delay: 0.5s; --x: -160px; --y: 100px; --rot: -8deg;"></div>
+                <div class="float-item document" style="--delay: 0.2s; --x: 170px; --y: 90px; --rot: 10deg;"></div>
+                <div class="float-item fingerprint" style="--delay: 0.4s; --x: -200px; --y: 10px; --rot: -5deg;"></div>
+                <div class="float-item newspaper" style="--delay: 0.6s; --x: 200px; --y: 0px; --rot: 6deg;"></div>
+            </div>
+            
+            <!-- Loading text -->
+            <div class="loader-status">
+                <div class="status-line">
+                    <span class="status-icon">🔍</span>
+                    <span class="typewriter-text"></span>
+                    <span class="type-cursor">|</span>
+                </div>
+                
+                <div class="decrypt-bar">
+                    <div class="decrypt-progress"></div>
+                    <div class="decrypt-glow"></div>
+                </div>
+                
+                <div class="status-info">
+                    <span class="info-label">CLEARANCE:</span>
+                    <span class="info-value">LEVEL 5</span>
+                    <span class="info-divider">|</span>
+                    <span class="info-label">STATUS:</span>
+                    <span class="info-value blink">DECRYPTING</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scan effect overlay -->
+        <div class="scan-overlay"></div>
+        
+        <!-- Film grain -->
+        <div class="film-grain"></div>
+    </div>
+
     <!-- Background Effects -->
     <div class="bg-layer">
         <div class="stars"></div>

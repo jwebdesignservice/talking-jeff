@@ -19,34 +19,34 @@ app.use(helmet({
 
 // CORS configuration - allow Vercel domains and localhost
 app.use(cors({
-    origin: function(origin, callback) {
+    origin: function (origin, callback) {
         // Allow requests with no origin (like mobile apps, curl, Postman)
         if (!origin) return callback(null, true);
-        
+
         // Allow all Vercel preview/production URLs
         if (origin.includes('.vercel.app') || origin.includes('.vercel.sh')) {
             return callback(null, true);
         }
-        
+
         // Allow localhost origins for development
         const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(',') || [
-            'http://localhost:8080', 
-            'http://127.0.0.1:8080', 
-            'http://localhost:5500', 
+            'http://localhost:8080',
+            'http://127.0.0.1:8080',
+            'http://localhost:5500',
             'http://127.0.0.1:5500',
             'http://localhost:3000',
             'http://127.0.0.1:3000'
         ];
-        
+
         if (allowedOrigins.includes(origin)) {
             return callback(null, true);
         }
-        
+
         // In production/Vercel, be permissive
         if (process.env.VERCEL) {
             return callback(null, true);
         }
-        
+
         callback(new Error('Not allowed by CORS'));
     },
     credentials: true
@@ -97,7 +97,7 @@ app.post('/api/chat', async (req, res) => {
         // Add word limit instruction to system prompt
         const openaiMessages = [];
         const wordLimitInstruction = `\n\nIMPORTANT: You MUST keep ALL responses to ${MAX_RESPONSE_WORDS} words or less. Be extremely concise and brief. No exceptions.`;
-        
+
         if (system) {
             openaiMessages.push({ role: 'system', content: system + wordLimitInstruction });
         } else {
@@ -127,7 +127,7 @@ app.post('/api/chat', async (req, res) => {
 
         const data = await response.json();
         let responseText = data.choices[0]?.message?.content || 'No response generated.';
-        
+
         // Enforce word limit on response (backup truncation)
         responseText = truncateToMaxWords(responseText, MAX_RESPONSE_WORDS);
 
@@ -416,7 +416,7 @@ app.post('/api/conversation', async (req, res) => {
         // Prepare messages with system prompt for OpenAI format
         // Add word limit instruction to system prompt
         const wordLimitInstruction = `\n\nIMPORTANT: You MUST keep ALL responses to ${MAX_RESPONSE_WORDS} words or less. Be extremely concise and brief. No exceptions.`;
-        
+
         const openaiMessages = [];
         if (system) {
             openaiMessages.push({ role: 'system', content: system + wordLimitInstruction });
@@ -448,7 +448,7 @@ app.post('/api/conversation', async (req, res) => {
 
         const chatData = await chatResponse.json();
         let responseText = chatData.choices[0]?.message?.content || 'No response generated.';
-        
+
         // Enforce word limit on response (backup truncation)
         responseText = truncateToMaxWords(responseText, MAX_RESPONSE_WORDS);
 
